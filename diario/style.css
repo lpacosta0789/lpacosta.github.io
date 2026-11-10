@@ -89,6 +89,14 @@ cite { display: block; margin-top: .9rem; font-style: normal; font-size: .85rem;
 .reflection { color: var(--muted); font-size: .92rem; border-top: 1px solid var(--line); padding-top: 1rem; }
 .actions { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: 1.25rem; }
 .actions .primary { margin-left: auto; }
+.other { margin-top: 1rem; display: flex; align-items: center; justify-content: space-between; gap: .5rem .75rem; flex-wrap: wrap; }
+.other-label { font-size: .78rem; color: var(--muted); }
+.other-links { display: flex; gap: .4rem; flex-wrap: wrap; }
+.other-links a {
+  font-size: .78rem; font-weight: 500; text-decoration: none; color: var(--accent);
+  border: 1px solid var(--line); border-radius: 999px; padding: .3rem .7rem;
+}
+.other-links a:hover, .other-links a:focus-visible { border-color: var(--accent); }
 
 /* Diario */
 .journal-head { display: flex; align-items: center; justify-content: space-between; }

@@ -22,6 +22,26 @@
   };
 
   const STORE = 'selah.entries.v1';
+
+  // Enlaces a YouVersion (bible.com): id numérico y abreviatura de cada versión.
+  const YV_VERSIONS = [
+    { name: 'RVR1960', id: 149, abbr: 'RVR1960' },
+    { name: 'NVI', id: 128, abbr: 'NVI' },
+    { name: 'NTV', id: 127, abbr: 'NTV' },
+    { name: 'TLA', id: 176, abbr: 'TLA' },
+  ];
+  const USFM = {
+    'Filipenses': 'PHP', '1 Pedro': '1PE', 'Mateo': 'MAT', 'Salmos': 'PSA', 'Juan': 'JHN', 'Isaías': 'ISA', 'Josué': 'JOS',
+    '2 Timoteo': '2TI', 'Deuteronomio': 'DEU', 'Apocalipsis': 'REV', 'Hebreos': 'HEB', 'Gálatas': 'GAL', '2 Corintios': '2CO',
+    '1 Juan': '1JN', 'Romanos': 'ROM', 'Lamentaciones': 'LAM', 'Efesios': 'EPH', 'Santiago': 'JAS', 'Proverbios': 'PRO',
+    'Colosenses': 'COL', 'Jeremías': 'JER', 'Eclesiastés': 'ECC', 'Habacuc': 'HAB', '1 Tesalonicenses': '1TH',
+    'Nehemías': 'NEH', 'Sofonías': 'ZEP', 'Números': 'NUM', '3 Juan': '3JN', '1 Corintios': '1CO', 'Miqueas': 'MIC',
+  };
+  function yvLink(ref, v) {
+    const m = ref.match(/^(.+) (\d+):([\d-]+)$/);
+    if (!m || !USFM[m[1]]) return null;
+    return `https://www.bible.com/bible/${v.id}/${USFM[m[1]]}.${m[2]}.${m[3]}.${v.abbr}`;
+  }
   const $ = (id) => document.getElementById(id);
   const norm = (s) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-zñ\s]/g, ' ');
 
@@ -77,6 +97,13 @@
     $('r-text').textContent = v.text;
     $('r-ref').textContent = v.ref + ' · RV1909';
     $('r-reflection').textContent = MOODS[mood].reflection;
+    const links = $('r-links'); links.innerHTML = '';
+    for (const ver of YV_VERSIONS) {
+      const href = yvLink(v.ref, ver); if (!href) continue;
+      const a = document.createElement('a');
+      a.href = href; a.target = '_blank'; a.rel = 'noopener'; a.textContent = ver.name;
+      links.appendChild(a);
+    }
     const card = $('result');
     card.hidden = false;
     card.style.animation = 'none'; void card.offsetWidth; card.style.animation = '';
