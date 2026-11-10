@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Selah</title>
+  <meta name="description" content="Un diario para escribir lo que sientes y recibir una palabra de la Biblia.">
+  <meta name="theme-color" content="#f6f5f2" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121315" media="(prefers-color-scheme: dark)">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Selah">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div>
+      <h1 class="brand">Selah</h1>
+      <p class="date" id="today"></p>
+    </div>
+  </header>
+
+  <main>
+    <!-- Escribir -->
+    <section id="view-write" class="view active" aria-labelledby="tab-write">
+      <label for="entry" class="prompt">¿Cómo está tu corazón hoy?</label>
+      <textarea id="entry" rows="6" placeholder="Escribe lo que piensas o sientes, con tus palabras…"></textarea>
+
+      <p class="hint">O elige cómo te sientes:</p>
+      <div class="chips" id="moods" role="group" aria-label="Estado de ánimo"></div>
+
+      <button class="primary" id="find" type="button">Buscar una palabra</button>
+
+      <article class="verse-card" id="result" hidden aria-live="polite">
+        <p class="mood-tag" id="r-mood"></p>
+        <blockquote>
+          <p id="r-text"></p>
+          <cite id="r-ref"></cite>
+        </blockquote>
+        <p class="reflection" id="r-reflection"></p>
+        <div class="actions">
+          <button class="ghost" id="another" type="button">Otro versículo</button>
+          <button class="ghost" id="copy" type="button">Copiar</button>
+          <button class="primary small" id="save" type="button">Guardar en mi diario</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- Diario -->
+    <section id="view-journal" class="view" aria-labelledby="tab-journal">
+      <div class="journal-head">
+        <h2>Mi diario</h2>
+        <button class="ghost small" id="export" type="button">Exportar</button>
+      </div>
+      <p class="privacy">Tus entradas se guardan solo en este dispositivo. Nadie más puede leerlas.</p>
+      <ol class="entries" id="entries"></ol>
+      <p class="empty" id="empty">Aún no has guardado nada. Cuando guardes una entrada aparecerá aquí.</p>
+    </section>
+  </main>
+
+  <nav class="tabs" role="tablist">
+    <button role="tab" id="tab-write" aria-selected="true" data-view="view-write">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16v4Z"/><path d="m13.5 6.5 4 4"/></svg>
+      Escribir
+    </button>
+    <button role="tab" id="tab-journal" aria-selected="false" data-view="view-journal">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h11a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M8 7h6M8 11h6"/></svg>
+      Diario
+    </button>
+  </nav>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="verses.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
