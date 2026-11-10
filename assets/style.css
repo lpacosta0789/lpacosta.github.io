@@ -1,0 +1,122 @@
+:root {
+  --bg: #f6f5f2;
+  --surface: #ffffff;
+  --text: #1c1d1f;
+  --muted: #7a7b7e;
+  --line: #e3e1dc;
+  --accent: #23324a; /* azul noche, sobrio */
+  --max: 64rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121315;
+    --surface: #1a1b1e;
+    --text: #e8e7e4;
+    --muted: #8b8c90;
+    --line: #2a2b2f;
+    --accent: #9fb0cc;
+  }
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font: 400 1rem/1.7 "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+.mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+.muted { color: var(--muted); }
+
+/* Navegación */
+.nav {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  max-width: var(--max); margin: 0 auto; padding: 1.25rem 1.5rem;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+}
+.logo { font-weight: 600; text-decoration: none; letter-spacing: -0.02em; }
+.logo span { color: var(--muted); font-weight: 300; }
+.nav nav { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.nav nav a { text-decoration: none; font-size: 0.875rem; color: var(--muted); transition: color .2s; }
+.nav nav a:hover { color: var(--text); }
+
+main { max-width: var(--max); margin: 0 auto; padding: 0 1.5rem; }
+
+/* Hero */
+.hero { padding: 8rem 0 5rem; }
+.eyebrow { color: var(--muted); font-size: 0.8rem; margin-bottom: 1.5rem; }
+.hero h1 {
+  font-size: clamp(2.4rem, 7vw, 4.5rem);
+  font-weight: 300; line-height: 1.05; letter-spacing: -0.04em;
+}
+.hero h1 strong { font-weight: 600; }
+.lead { max-width: 34rem; margin-top: 1.5rem; color: var(--muted); font-size: 1.125rem; }
+.checker {
+  margin-top: 4rem; height: 8px; width: 96px;
+  background: conic-gradient(var(--text) 25%, transparent 0 50%, var(--text) 0 75%, transparent 0) 0 0 / 8px 8px;
+  opacity: .8;
+}
+
+/* Bloques */
+.block {
+  display: grid; grid-template-columns: 12rem 1fr; gap: 2rem;
+  padding: 4.5rem 0; border-top: 1px solid var(--line);
+}
+.label { font-size: 0.8rem; color: var(--muted); padding-top: .3rem; }
+.content > p { max-width: 38rem; }
+.intro { color: var(--muted); margin-bottom: 2.5rem; }
+
+.tags { display: flex; flex-wrap: wrap; gap: .5rem; list-style: none; margin-top: 1.5rem; }
+.tags li {
+  font-size: .8rem; padding: .3rem .8rem;
+  border: 1px solid var(--line); border-radius: 999px; color: var(--muted);
+}
+
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 1rem; }
+.card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 4px;
+  padding: 1.5rem; transition: border-color .2s, transform .2s;
+}
+.card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.card h3 { font-weight: 500; margin: .75rem 0 .35rem; }
+.card p { color: var(--muted); font-size: .925rem; }
+
+/* Pilotos */
+.riders { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.rider {
+  display: grid; grid-template-columns: 6rem 1fr; gap: 1.5rem; align-items: start;
+  background: var(--surface); padding: 2rem 1.75rem;
+}
+.num {
+  font-size: 3.5rem; font-weight: 500; line-height: 1; letter-spacing: -0.05em;
+  color: transparent; -webkit-text-stroke: 1px var(--accent);
+}
+.rider:hover .num { color: var(--accent); }
+.series { font-size: .75rem; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); }
+.rider h3 { font-weight: 500; font-size: 1.35rem; margin: .2rem 0 .5rem; }
+.rider p:last-child { color: var(--muted); font-size: .95rem; max-width: 32rem; }
+
+.links a { text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 2px; transition: border-color .2s; }
+.links a:hover { border-color: var(--text); }
+
+/* Footer */
+.footer {
+  max-width: var(--max); margin: 0 auto; padding: 2.5rem 1.5rem 3rem;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+  font-size: .8rem; border-top: 1px solid var(--line);
+}
+
+@media (max-width: 720px) {
+  .nav { padding: 1rem; flex-direction: column; align-items: flex-start; }
+  .nav nav { gap: 1rem; }
+  main { padding: 0 1rem; }
+  .hero { padding: 4rem 0 3rem; }
+  .block { grid-template-columns: 1fr; gap: 1rem; padding: 3rem 0; }
+  .rider { grid-template-columns: 1fr; gap: .75rem; padding: 1.5rem 1.25rem; }
+  .num { font-size: 2.75rem; }
+  .footer { padding: 2rem 1rem; }
+}

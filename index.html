@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>lpacosta</title>
+  <meta name="description" content="Sitio personal de lpacosta: proyectos, ideas y pasión por el motorsport.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="nav">
+    <a class="logo" href="#inicio">lp<span>/</span>acosta</a>
+    <nav>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#paddock">Paddock</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero">
+      <p class="eyebrow mono">// box, box — bienvenido</p>
+      <h1>Hola, soy <strong>lpacosta</strong>.</h1>
+      <p class="lead">Me gustan las cosas simples, bien hechas y rápidas. Este es mi espacio para compartir lo que hago y lo que me apasiona.</p>
+      <div class="checker" aria-hidden="true"></div>
+    </section>
+
+    <section id="sobre-mi" class="block">
+      <div class="label mono">01 · Sobre mí</div>
+      <div class="content">
+        <p>Aquí va una breve presentación: quién eres, a qué te dedicas y qué te mueve. Dos o tres líneas bastan.</p>
+        <ul class="tags">
+          <li>Diseño minimalista</li>
+          <li>Tecnología</li>
+          <li>Fórmula 1</li>
+          <li>MotoGP</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="proyectos" class="block">
+      <div class="label mono">02 · Proyectos</div>
+      <div class="content grid">
+        <article class="card">
+          <span class="mono muted">P1</span>
+          <h3>Proyecto uno</h3>
+          <p>Una descripción corta de lo que es y por qué importa.</p>
+        </article>
+        <article class="card">
+          <span class="mono muted">P2</span>
+          <h3>Proyecto dos</h3>
+          <p>Otro proyecto, otra idea. Espacio para crecer.</p>
+        </article>
+        <article class="card">
+          <span class="mono muted">P3</span>
+          <h3>Próximamente</h3>
+          <p>Lo que viene en la siguiente vuelta.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="paddock" class="block">
+      <div class="label mono">03 · Paddock</div>
+      <div class="content">
+        <p class="intro">Fuera de la pantalla, mis fines de semana tienen bandera a cuadros. Dos pilotos, dos ruedas y cuatro, una misma obsesión por la velocidad.</p>
+        <div class="riders">
+          <article class="rider">
+            <div class="num mono">33</div>
+            <div>
+              <p class="series mono">Fórmula 1</p>
+              <h3>Max Verstappen</h3>
+              <p>Agresivo, preciso y sin miedo bajo la lluvia. La definición de ir a por todas en cada vuelta.</p>
+            </div>
+          </article>
+          <article class="rider">
+            <div class="num mono">93</div>
+            <div>
+              <p class="series mono">MotoGP</p>
+              <h3>Marc Márquez</h3>
+              <p>Codo en el asfalto, salvadas imposibles y la terquedad de volver siempre más fuerte.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="block">
+      <div class="label mono">04 · Contacto</div>
+      <div class="content">
+        <p>¿Hablamos? Encuéntrame en:</p>
+        <p class="links">
+          <a href="https://github.com/lpacosta0789">GitHub ↗</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer mono">
+    <span>© <span id="y"></span> lpacosta</span>
+    <span class="muted">Lights out and away we go.</span>
+  </footer>
+
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
